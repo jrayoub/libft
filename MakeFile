@@ -1,0 +1,6 @@
+NAME: libft
+cc: gcc -W -W -W
+clean: rm -rf *.o
+
+all:
+re:$clean,
