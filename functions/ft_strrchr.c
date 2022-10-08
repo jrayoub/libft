@@ -1,27 +1,29 @@
-#include<unistd.h>
+#include "../libft.h"
 
-int ft_strlen(char *s){
-    int i;
+int	ft_strlen(char *s)
+{
+	int	i;
 
-    i = 0;
-    while(s[i])
-        i++;
-    return i;
+	i = 0;
+	while (s[i])
+		i++;
+	return (i);
 }
-char *ft_strrchr(char *s, int c){
-    int i;
+char	*ft_strrchr(const char *s, int c)
+{
+	int	i;
 
-    i = ft_strlen(s);
-    while(i >= 0 && s[i] != c)
-        i--;
-    if(s[i] == c)
-        return &s[i];
-    return 0;
+	i = ft_strlen(s);
+	while (i >= 0 && s[i] != c)
+		i--;
+	if (s[i] == c)
+		return ((char *)&s[i]);
+	return (0);
 }
 
 // void ft_print(char *s){
 //     int i;
-//     i = 0;    
+//     i = 0;
 //     if(s == 0)
 //         write(1,"(null)",6);
 //     else
@@ -34,6 +36,6 @@ char *ft_strrchr(char *s, int c){
 //     // Write C code here
 //     ft_print("\nReturn Is : ");
 //     ft_print(ft_strrchr("Hello",av[1][0]));
-    
-//     return 0;
+
+//     return (0);
 // }
