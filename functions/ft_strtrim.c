@@ -50,15 +50,15 @@ char	*ft_strtrim(char const *s1, char const *set)
 			j++;
 	}
 	end = i;
-	while (start < end)
+	while (start <= end)
 	{
 		cpy[k++] = s1[start++];
 	}
+	cpy[k] = '\0';
 	return (cpy);
 }
 
 int	main(void)
 {
-	char	s[] = "*----*H****e-llo**___________";
-	printf("%s", ft_strtrim(s, "*-_"));
+	printf("%s", ft_strtrim("*----*H****e-llo**___________", "*-_"));
 }
