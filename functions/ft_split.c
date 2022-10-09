@@ -1,47 +1,48 @@
 #include "../libft.h"
 
-void	*ft_memcpy(void *dest, const void *src, size_t n)
-{
-	char			*dstcpy;
-	const char		*srccpy;
-	unsigned int	i;
-
-	dstcpy = dest;
-	srccpy = src;
-	i = 0;
-	while (i < n)
-	{
-		dstcpy[i] = srccpy[i];
-		i++;
-	}
-	return (dest);
-}
-
-/**
-	* @param {String} cs:  The string to be split
-	* @param {Char} c:  The delimiter character.
- 	* @returns  The number of stings available
- 	* @brief counts how many string will be after the split
- */
 size_t	cont_strings(const char *s, char c)
 {
 	int	i;
 	int	counter;
 
 	counter = 1;
+	i = 0;
 	while (s[i])
 		if (s[i++] == c)
 			counter++;
 	return (counter);
 }
+
 size_t	count_litters(const char *s, char c)
 {
 	int	i;
 
+	i = 0;
 	while (s[i] && s[i] != c)
 		i++;
 	return (i);
 }
+
+char	*part(const char *s, char c)
+{
+	int		n;
+	int		i;
+	char	*ptr;
+
+	i = 0;
+	n = count_litters(s, c);
+	ptr = (char *)malloc(sizeof(char) * (n + 1));
+	if (ptr == NULL)
+		return (NULL);
+	while (i < n)
+	{
+		ptr[i] = s[i];
+		i++;
+	}
+	ptr[i] = 0;
+	return (ptr);
+}
+
 /**
 	* @param {String} cs:  The string to be split
 	* @param {Char} c:  The delimiter character.
@@ -58,32 +59,39 @@ char	**ft_split(char const *s, char c)
 	int		i;
 	char	**rs;
 	char	*ptr;
-	size_t	n;
+	char	*result;
 
 	strings_count = cont_strings(s, c);
-	rs = (char **)malloc(strings_count * sizeof(char *));
+	rs = (char **)malloc((strings_count + 1) * sizeof(char *));
 	if (!rs)
 		return (NULL);
 	i = 0;
-	while (s[i])
+	while (*s)
 	{
-		n = count_litters(&s[i], c);
-		ptr = malloc(n);
-		if (ptr == NULL)
-			return (NULL);
-		*rs++ = (char *)ft_memcpy(ptr, &s[i], n);
-		i += n - 1;
+		while (*s && *s == c)
+			s++;
+		if (*s)
+		{
+			result = part(s, c);
+			rs[i] = result;
+			i++;
+		}
+		while (*s && *s != c)
+			s++;
 	}
-	*rs = 0;
+	rs[i] = 0;
 	return (rs);
 }
+
 int	main(void)
 {
 	char	**rs;
+	int		i;
 
+	i = 0;
 	rs = ft_split("one,tow,three,four,five", ',');
-	for (size_t i = 0; rs[i] != 0; i++)
+	while (rs[i])
 	{
-		printf("<%s>\n", rs[i]);
+		printf("<%s>", rs[i++]);
 	}
 }
