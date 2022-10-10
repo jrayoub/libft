@@ -24,14 +24,14 @@ char	*ft_strchr(const char *s, int c)
 		i++;
 	}
 	if (s[i] == c)
-		return (&s[i]);
+		return ((char *)&s[i]);
 	return (0);
 }
 
-int	main(int ac, char **av)
-{
-	// Write C code here
-	ft_print("\nReturn Is : ");
-	ft_print(ft_strchr("Hello", av[1][0]));
-	return (0);
-}
+// int	main(int ac, char **av)
+// {
+// 	// Write C code here
+// 	ft_print("\nReturn Is : ");
+// 	ft_print(ft_strchr("Hello", av[1][0]));
+// 	return (0);
+// }

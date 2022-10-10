@@ -14,6 +14,8 @@ int	ft_atoi(const char *nptr)
 	i = 0;
 	nmbr = 0;
 	sign = 1;
+	while (nptr[i] && nptr[i] >= 9 && nptr[i] <= 13)
+		i++;
 	if (nptr[i] == '-' || nptr[i] == '+')
 	{
 		if (nptr[i++] == '-')
@@ -27,9 +29,11 @@ int	ft_atoi(const char *nptr)
 	return (sign * nmbr);
 }
 
-int	main(int ac, char **av)
-{
-	int nmbr = ft_atoi(av[1]);
-	printf("value >> %d", nmbr);
-	return (0);
-}
+// int	main(int ac, char **av)
+// {
+// 	int	nmbr;
+
+// 	nmbr = ft_atoi(av[1]);
+// 	printf("value >> %d", nmbr);
+// 	return (0);
+// }

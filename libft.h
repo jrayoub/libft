@@ -4,6 +4,7 @@
 # include <stdio.h>
 # include <stdlib.h>
 # include <unistd.h>
+# include <string.h>
 
 int		ft_isalpha(char c);
 int		ft_islower(char c);

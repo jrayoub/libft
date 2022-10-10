@@ -1,15 +1,5 @@
 #include "../libft.h"
 
-size_t	ft_strlen(char *s)
-{
-	int	i;
-
-	i = 0;
-	while (s[i])
-		i++;
-	return (i);
-}
-
 void	*ft_memcpy(void *dest, const void *src, size_t n)
 {
 	char			*dstcpy;
@@ -29,8 +19,8 @@ void	*ft_memcpy(void *dest, const void *src, size_t n)
 
 char	*ft_strdup(const char *s)
 {
-	char *ptr;
-	size_t n;
+	char	*ptr;
+	size_t	n;
 
 	n = ft_strlen(s);
 	ptr = malloc(n);

@@ -1,12 +1,12 @@
 #include "../libft.h"
 
-int	isupper(char c)
+int	ft_isupper(char c)
 {
 	return ((c >= 'A' && c <= 'Z') ? 1 : 0);
 }
 char	ft_tolower(char c)
 {
-	if (isupper(c) != 0)
+	if (ft_isupper(c) != 0)
 		c -= 32;
 	return (c);
 }

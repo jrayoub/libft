@@ -23,13 +23,12 @@ void	*ft_memmove(void *dest, const void *src, size_t n)
 	return (ft_memcpy(dest, temp, n));
 }
 
-// int	main(int ac, char **av)
-// {
-// 	int m[5] = {0, 1, 2, 3, 4};
-// 	ft_memmove(&m[2], &m[0], 12);
-// 	for (size_t i = 0; i < 5; i++)
-// 	{
-// 		printf(" %d ,", m[i]);
-// 	}
-// 	return (0);
-// }
+ int	main(int ac, char **av)
+ {
+	 char s[] = "123456789";
+	memmove(&s[5], &s[0], 3);
+	printf(" %s ,", s);
+	ft_memmove(&s[5], &s[0], 3);
+	printf(" %s ,", s);
+ 	return (0);
+ }

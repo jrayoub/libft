@@ -1,6 +1,20 @@
-NAME: libft
-cc: gcc -W -W -W
-clean: rm -rf *.o
+OBJCTS := functions/ft_isalnum.o functions/ft_isprint.o functions/ft_memcmp.o  functions/ft_putchar_fd.o functions/ft_split.o \
+					functions/ft_strlcat.o functions/ft_strncmp.o functions/ft_substr.o functions/ft_atoi.o functions/ft_isalpha.o \
+					functions/ft_itoa.o functions/ft_memcpy.o  functions/ft_putendl_fd.o functions/ft_strchr.o  functions/ft_strlcpy.o \
+					functions/ft_strnstr.o functions/ft_tolower.o functions/ft_bzero.o   functions/ft_isascii.o functions/ft_memcpy.o \
+					functions/ft_memmove.o functions/ft_putnbr_fd.o  functions/ft_strdup.o  functions/ft_strlen.o  functions/ft_strrchr.o \
+					functions/ft_toupper.o functions/ft_calloc.o  functions/ft_isdigit.o functions/ft_memchr.o  functions/ft_memset.o  \
+					functions/ft_putstr_fd.o  functions/ft_strjoin.o functions/ft_strmapi.o functions/ft_strtrim.o
+CFLAGS := -W -W -W
+all: ${OBJCTS}
 
-all:
-re:$clean,
+${OBJCTS} : %.o : %.c
+
+%.o : %.c
+		$(CC) -c $(CFLAGS) $< -o $@
+
+clean:
+	rm -f */*.o
+fclean:
+	rm -f */*.o
+re: clean all
