@@ -5,11 +5,17 @@ size_t	cont_strings(const char *s, char c)
 	int	i;
 	int	counter;
 
-	counter = 1;
+	counter = 0;
 	i = 0;
 	while (s[i])
-		if (s[i++] == c)
+	{
+		if (s[i] != c)
 			counter++;
+		while (s[i] && s[i] != c)
+			i++;
+		i++;
+	}
+	printf("str :  %s, Returned Count is %d", s, counter);
 	return (counter);
 }
 
@@ -42,7 +48,16 @@ char	*part(const char *s, char c)
 	ptr[i] = 0;
 	return (ptr);
 }
+void	ft_free(char **rs)
+{
+	int	i;
 
+	i = 0;
+	while (rs[i] != NULL)
+	{
+		free(rs[i]);
+	}
+}
 /**
 	* @param {String} cs:  The string to be split
 	* @param {Char} c:  The delimiter character.
@@ -55,12 +70,13 @@ char	*part(const char *s, char c)
  */
 char	**ft_split(char const *s, char c)
 {
-	int		strings_count;
-	int		i;
-	char	**rs;
-	char	*result;
+	int strings_count;
+	int i;
+	char **rs;
+	char *result;
 
 	strings_count = cont_strings(s, c);
+	printf("\n size allocated %d\n", strings_count + 1);
 	rs = (char **)malloc((strings_count + 1) * sizeof(char *));
 	if (!rs)
 		return (NULL);
@@ -73,6 +89,11 @@ char	**ft_split(char const *s, char c)
 		{
 			result = part(s, c);
 			rs[i] = result;
+			if (result == NULL)
+			{
+				ft_free(rs);
+				return (NULL);
+			}
 			i++;
 		}
 		while (*s && *s != c)
@@ -81,16 +102,3 @@ char	**ft_split(char const *s, char c)
 	rs[i] = 0;
 	return (rs);
 }
-
-// int	main(void)
-// {
-// 	char	**rs;
-// 	int		i;
-
-// 	i = 0;
-// 	rs = ft_split("one,tow,three,four,five", ',');
-// 	while (rs[i])
-// 	{
-// 		printf("<%s>", rs[i++]);
-// 	}
-// }

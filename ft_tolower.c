@@ -7,6 +7,6 @@ int	ft_isupper(char c)
 char	ft_tolower(char c)
 {
 	if (ft_isupper(c) != 0)
-		c -= 32;
+		c += 32;
 	return (c);
 }

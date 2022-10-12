@@ -3,7 +3,7 @@
 long int	ft_abs(long int n)
 {
 	if (n < 0)
-		return ((n * 1));
+		return ((n * -1));
 	return (n);
 }
 
@@ -23,5 +23,6 @@ void	ft_putnbr_fd(int n, int fd)
 
 // int	main(void)
 // {
-// 	ft_putnbr_fd(-2147483648, 1);
+// 	ft_putnbr_fd(INT_MIN, 1);
+// 	ft_putnbr_fd(-42, 1);
 // }

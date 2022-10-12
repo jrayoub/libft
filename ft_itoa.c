@@ -35,8 +35,13 @@ char	*ft_itoa(int n)
 	if (!str)
 		return (NULL);
 	nc = ft_abs((long)n);
+	if(n < 0)
+	{
+		str[0] = '-';
+		buff++;
+	}
 	ft_converter(str, nc, buff);
-	//str[buff + 1] = 0;
+	str[buff + 1] = 0;
 	return (str);
 }
 
