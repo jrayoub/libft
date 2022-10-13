@@ -19,7 +19,15 @@ char	*ft_strjoin(char const *s1, char const *s2)
 		ns[i++] = s1[j++];
 	j = 0;
 	while (s2[j])
-		ns[i++] = s1[j++];
+		ns[i++] = s2[j++];
 	ns[i] = '\0';
 	return (ns);
 }
+
+// int	main(void)
+// {
+// 	char	*s;
+
+// 	s = ft_strjoin("sdf ", "  asdfads");
+// 	printf("%s", s);
+// }

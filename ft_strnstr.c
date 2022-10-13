@@ -4,7 +4,7 @@ char	*ft_strnstr(const char *big, const char *little, size_t len)
 {
 	unsigned int	i;
 	int				j;
-	int				ci;
+	size_t				ci;
 	int				llen;
 
 	i = 0;
@@ -18,12 +18,12 @@ char	*ft_strnstr(const char *big, const char *little, size_t len)
 		j = 0;
 		while (little[j] && big[ci] == little[j])
 		{
-			if (j == llen - 1)
+			if (j == llen - 1 && ci < len)
 				return ((char *)&big[i]);
 			ci++;
 			j++;
 		}
 		i++;
 	}
-	return (0);
+	return (NULL);
 }

@@ -3,17 +3,25 @@
 char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
 	char	*substring;
-	int		i;
+	size_t	i;
+	size_t	size;
 
 	i = 0;
-	substring = malloc(len);
-	if (substring)
+	if (!s)
 		return (NULL);
-	while (s[start] && start < len)
+	size = ft_strlen(s);
+	if (len > size)
+		len = size;
+	substring = malloc(sizeof(char) * len + 1);
+	if (!substring)
+		return (NULL);
+	if (len >= start)
 	{
-		substring[i++] = s[start++];
+		while (i < len)
+		{
+			substring[i++] = s[start++];
+		}
 	}
-	if (start >= len)
-		substring[i] = '\0';
+	substring[i] = '\0';
 	return (substring);
 }

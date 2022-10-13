@@ -19,10 +19,8 @@ char	*ft_strtrim(char const *s1, char const *set)
 	char	*cpy;
 	int		start;
 	int		end;
+	int		size;
 
-	cpy = malloc(ft_strlen(s1));
-	if (!cpy)
-		return (0);
 	i = 0;
 	j = 0;
 	k = 0;
@@ -50,6 +48,13 @@ char	*ft_strtrim(char const *s1, char const *set)
 			j++;
 	}
 	end = i;
+	if (end > start)
+		size = end - start;
+	else
+		size = 0;
+	cpy = malloc(size);
+	if (!cpy)
+		return (0);
 	while (start <= end)
 	{
 		cpy[k++] = s1[start++];
@@ -57,8 +62,3 @@ char	*ft_strtrim(char const *s1, char const *set)
 	cpy[k] = '\0';
 	return (cpy);
 }
-
-// int	main(void)
-// {
-// 	printf("%s", ft_strtrim("*----*H****e-llo**___________", "*-_"));
-// }

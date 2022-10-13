@@ -25,6 +25,12 @@ int	ft_atoi(const char *nptr)
 	{
 		nmbr *= 10;
 		nmbr += nptr[i++] - '0';
+		if(nmbr > LLONG_MAX){
+			if(sign < 0)
+				return -1;
+			else
+				return 1;
+		}
 	}
 	return (sign * nmbr);
 }

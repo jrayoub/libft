@@ -15,7 +15,6 @@ size_t	cont_strings(const char *s, char c)
 			i++;
 		i++;
 	}
-	printf("str :  %s, Returned Count is %d", s, counter);
 	return (counter);
 }
 
@@ -76,7 +75,6 @@ char	**ft_split(char const *s, char c)
 	char *result;
 
 	strings_count = cont_strings(s, c);
-	printf("\n size allocated %d\n", strings_count + 1);
 	rs = (char **)malloc((strings_count + 1) * sizeof(char *));
 	if (!rs)
 		return (NULL);
