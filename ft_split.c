@@ -1,6 +1,6 @@
 #include "libft.h"
 
-size_t	cont_strings(const char *s, char c)
+static size_t	cont_strings(const char *s, char c)
 {
 	int	i;
 	int	counter;
@@ -18,7 +18,7 @@ size_t	cont_strings(const char *s, char c)
 	return (counter);
 }
 
-size_t	count_litters(const char *s, char c)
+static size_t	count_litters(const char *s, char c)
 {
 	int	i;
 
@@ -28,7 +28,7 @@ size_t	count_litters(const char *s, char c)
 	return (i);
 }
 
-char	*part(const char *s, char c)
+static char	*part(const char *s, char c)
 {
 	int		n;
 	int		i;
@@ -47,7 +47,7 @@ char	*part(const char *s, char c)
 	ptr[i] = 0;
 	return (ptr);
 }
-void	ft_free(char **rs)
+static void	ft_free(char **rs)
 {
 	int	i;
 
@@ -73,7 +73,8 @@ char	**ft_split(char const *s, char c)
 	int i;
 	char **rs;
 	char *result;
-
+	if (!s)
+		return (NULL);
 	strings_count = cont_strings(s, c);
 	rs = (char **)malloc((strings_count + 1) * sizeof(char *));
 	if (!rs)

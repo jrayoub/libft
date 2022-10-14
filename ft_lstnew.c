@@ -1,4 +1,4 @@
-#include"../libft.h"
+#include"./libft.h"
 
 t_list *ft_lstnew(void *content){
 	t_list *node = malloc(sizeof(t_list));

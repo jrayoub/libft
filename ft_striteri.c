@@ -21,15 +21,3 @@ void	ft_striteri(char *s, void (*f)(unsigned int, char *))
 		i++;
 	}
 }
-
-// void	shift_by_index(unsigned int index, char *c)
-// {
-// 	*c = (*c + index);
-// }
-// int	main(void)
-// {
-// 	char ns[20] = "12345";
-// 	ft_striteri(ns, &shift_by_index);
-// 	printf("%s", ns);
-// 	return (0);
-// }

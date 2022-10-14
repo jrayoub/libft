@@ -17,13 +17,3 @@ void	*ft_memchr(const void *s, int c, size_t n)
 	}
 	return (0);
 }
-
-// int main(int ac, char** av)
-// {
-
-//     if(ac > 1)
-//     {
-//         char *str = ft_memchr((void *) av[1],av[2][0],ft_strlen(av[1]));
-//         printf("Result is >> %s", str);
-//     }
-// }

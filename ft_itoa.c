@@ -20,33 +20,31 @@ NULL if the allocation fails.
  */
 char	*ft_itoa(int n)
 {
+	long int	num_counter;
 	long int	nc;
 	int			buff;
 	char		*str;
 
 	buff = 0;
-	nc = ft_abs((long)n);
-	while (nc >= 10)
-	{
-		nc /= 10;
+	if(n < 0){
+		num_counter = (long)n * -1;
 		buff++;
 	}
-	str = (char *)malloc(sizeof(char) * buff + 1);
+	else
+		num_counter = n;
+	nc = num_counter;
+	while (num_counter >= 10)
+	{
+		num_counter /= 10;
+		buff++;
+	}
+	buff++;
+	str = (char *)malloc((sizeof(char) * buff) + 1);
 	if (!str)
 		return (NULL);
-	nc = ft_abs((long)n);
 	if(n < 0)
-	{
 		str[0] = '-';
-		buff++;
-	}
-	ft_converter(str, nc, buff);
-	str[buff + 1] = 0;
+	ft_converter(str, nc, buff - 1);
+	str[buff] = '\0';
 	return (str);
 }
-
-// int	main(void)
-// {
-// 	printf("%s", ft_itoa(-2147483648));
-// 	return (0);
-// }

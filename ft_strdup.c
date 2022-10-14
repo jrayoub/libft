@@ -6,7 +6,7 @@ char	*ft_strdup(const char *s)
 	size_t n;
 
 	n = ft_strlen(s);
-	ptr = malloc(n);
+	ptr = malloc(n + 1);
 	if (ptr == NULL)
 		return (NULL);
 	if (n == 0)
@@ -14,5 +14,6 @@ char	*ft_strdup(const char *s)
 		*ptr = 0;
 		return (ptr);
 	}
-	return (char *)ft_memcpy(ptr, s, n);
+	ft_strlcpy(ptr, s, n + 1);
+	return ptr;
 }

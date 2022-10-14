@@ -7,7 +7,8 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	char	*ns;
 	int		j;
 	int		i;
-
+	if (!s1 | !s2)
+		return (NULL);
 	len2 = ft_strlen(s2);
 	len1 = ft_strlen(s1);
 	j = 0;
@@ -23,11 +24,3 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	ns[i] = '\0';
 	return (ns);
 }
-
-// int	main(void)
-// {
-// 	char	*s;
-
-// 	s = ft_strjoin("sdf ", "  asdfads");
-// 	printf("%s", s);
-// }

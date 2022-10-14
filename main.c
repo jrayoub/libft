@@ -1,5 +1,8 @@
 #include "libft.h"
-int main() {
-	ft_strlcpy("asdasd","asdas",5);
-	return 0;
-	}
+
+int	main(void)
+{
+	char buff[0xF0];
+	ft_putnbr_fd(INT_MIN,2);
+	return (0);
+}

@@ -1,13 +1,4 @@
 #include "libft.h"
-size_t	t_strlen(char *s)
-{
-	int	i;
-
-	i = 0;
-	while (s[i])
-		i++;
-	return (i);
-}
 
 /**
  * @brief Applies the function ’f’ to each character of the
@@ -25,9 +16,12 @@ char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 	int		i;
 	int		buff;
 	char	*ns;
-
-	buff = t_strlen((char *)s);
+	if(!s || !f)
+		return NULL;
+	buff = ft_strlen((char *)s);
 	ns = (char *)malloc(sizeof(char) * buff + 1);
+	if(!ns)
+		return NULL;
 	i = 0;
 	while (s[i])
 	{
@@ -37,15 +31,3 @@ char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 	ns[i] = 0;
 	return (ns);
 }
-// char	shift_by_index(unsigned int index, char c)
-// {
-// 	return (c + index);
-// }
-// int	main(void)
-// {
-// 	char	*ns;
-
-// 	ns = ft_strmapi("123456", &shift_by_index);
-// 	printf("%s", ns);
-// 	return (0);
-// }

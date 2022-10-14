@@ -1,16 +1,6 @@
 
 #include "libft.h"
 
-size_t	ft_strlen(const char *s)
-{
-	int	i;
-
-	i = 0;
-	while (s[i])
-		i++;
-	return (i);
-}
-
 char	*ft_strtrim(char const *s1, char const *set)
 {
 	int		i;
@@ -20,7 +10,8 @@ char	*ft_strtrim(char const *s1, char const *set)
 	int		start;
 	int		end;
 	int		size;
-
+	if (!s1)
+		return (NULL);
 	i = 0;
 	j = 0;
 	k = 0;
@@ -49,10 +40,10 @@ char	*ft_strtrim(char const *s1, char const *set)
 	}
 	end = i;
 	if (end > start)
-		size = end - start;
+		size = end - start + 1;
 	else
 		size = 0;
-	cpy = malloc(size);
+	cpy = malloc(size + 1);
 	if (!cpy)
 		return (0);
 	while (start <= end)
