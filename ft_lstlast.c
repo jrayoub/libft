@@ -1,10 +1,24 @@
-#include"./libft.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_lstlast.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: aaitouna <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/10/15 07:28:00 by aaitouna          #+#    #+#             */
+/*   Updated: 2022/10/15 07:28:02 by aaitouna         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-t_list *ft_lstlast(t_list *lst){
-	if(!lst){
-		return 0;
+#include "libft.h"
+
+t_list	*ft_lstlast(t_list *lst)
+{
+	if (!lst)
+	{
+		return (0);
 	}
 	while (lst->next)
 		lst = lst->next;
-	return lst->next;
+	return (lst);
 }

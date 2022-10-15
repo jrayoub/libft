@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_split.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: aaitouna <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/10/14 16:02:51 by aaitouna          #+#    #+#             */
+/*   Updated: 2022/10/14 16:02:53 by aaitouna         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 
 static size_t	cont_strings(const char *s, char c)
@@ -47,6 +59,7 @@ static char	*part(const char *s, char c)
 	ptr[i] = 0;
 	return (ptr);
 }
+
 static void	ft_free(char **rs)
 {
 	int	i;
@@ -57,6 +70,7 @@ static void	ft_free(char **rs)
 		free(rs[i]);
 	}
 }
+
 /**
 	* @param {String} cs:  The string to be split
 	* @param {Char} c:  The delimiter character.
@@ -69,10 +83,11 @@ static void	ft_free(char **rs)
  */
 char	**ft_split(char const *s, char c)
 {
-	int strings_count;
-	int i;
-	char **rs;
-	char *result;
+	int		strings_count;
+	int		i;
+	char	**rs;
+	char	*result;
+
 	if (!s)
 		return (NULL);
 	strings_count = cont_strings(s, c);

@@ -1,6 +1,19 @@
-#include"./libft.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_lstadd_front.c                                  :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: aaitouna <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/10/14 14:40:49 by aaitouna          #+#    #+#             */
+/*   Updated: 2022/10/14 14:40:50 by aaitouna         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-void ft_lstadd_front(t_list **lst, t_list *new){
+#include "libft.h"
+
+void	ft_lstadd_front(t_list **lst, t_list *new)
+{
 	new->next = *lst;
 	*lst = new;
 }

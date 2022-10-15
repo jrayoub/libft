@@ -1,6 +1,19 @@
-#include"./libft.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_lstiter.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: aaitouna <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/10/14 14:41:32 by aaitouna          #+#    #+#             */
+/*   Updated: 2022/10/14 14:41:36 by aaitouna         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-void ft_lstiter(t_list *lst, void (*f)(void *)){
+#include "libft.h"
+
+void	ft_lstiter(t_list *lst, void (*f)(void *))
+{
 	while (lst)
 	{
 		(*f)(lst->content);

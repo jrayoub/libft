@@ -1,14 +1,31 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_itoa.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: aaitouna <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/10/14 14:40:10 by aaitouna          #+#    #+#             */
+/*   Updated: 2022/10/14 14:40:12 by aaitouna         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
+
 void	ft_converter(char *s, long int n, int index)
 {
 	if (n >= 10)
 		ft_converter(s, n / 10, index - 1);
 	s[index] = '0' + n % 10;
 }
+
 long int	ft_abs(long int v)
 {
-	return (v < 0 ? v * -1 : v);
+	if (v < 0)
+		return (v * -1);
+	return (v);
 }
+
 /**
  * @brief Allocates (with malloc(3)) and returns a string
 representing the integer received as an argument.
@@ -26,7 +43,8 @@ char	*ft_itoa(int n)
 	char		*str;
 
 	buff = 0;
-	if(n < 0){
+	if (n < 0)
+	{
 		num_counter = (long)n * -1;
 		buff++;
 	}
@@ -42,7 +60,7 @@ char	*ft_itoa(int n)
 	str = (char *)malloc((sizeof(char) * buff) + 1);
 	if (!str)
 		return (NULL);
-	if(n < 0)
+	if (n < 0)
 		str[0] = '-';
 	ft_converter(str, nc, buff - 1);
 	str[buff] = '\0';
