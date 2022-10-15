@@ -32,6 +32,13 @@ static int	get_start_index(char const *s1, char const *set)
 	return (i);
 }
 
+/**
+ * @brief Get the end index object
+ *
+ * @param s1
+ * @param set
+ * @return int
+ */
 static int	get_end_index(char const *s1, char const *set)
 {
 	int	i;

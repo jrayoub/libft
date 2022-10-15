@@ -12,18 +12,60 @@
 
 #include "libft.h"
 
-void	ft_converter(char *s, long int n, int index)
+/**
+* @brief recursive function divedes number and reducing from the index then
+	call it self untile number has no more then one number
+		the start on adding it to string
+ * @param s {Char *} emty string to hold the final result
+ * @param n {Int} number to be converted
+ * @param index {Int} str index
+ */
+static void	ft_converter(char *s, long int n, int index)
 {
 	if (n >= 10)
 		ft_converter(s, n / 10, index - 1);
 	s[index] = '0' + n % 10;
 }
 
-long int	ft_abs(long int v)
+/**
+ * @brief get the Absolute value of number
+ *
+ * @param v {Int} given number
+ * @return long int always positive
+ */
+static long int	ft_abs(long int v)
 {
 	if (v < 0)
 		return (v * -1);
 	return (v);
+}
+
+/**
+ * @brief  calculat how many caracter in given number
+	+ 1 byte for endofline '/0'
+ * @param n {Int} the Given Number.
+ * @return {Int} the size of the string to be Allocated
+ */
+static int	calculat_number_lenght(long int n)
+{
+	int			buff;
+	long int	num_counter;
+
+	buff = 0;
+	if (n < 0)
+	{
+		num_counter = (long)n * -1;
+		buff++;
+	}
+	else
+		num_counter = n;
+	while (num_counter >= 10)
+	{
+		num_counter /= 10;
+		buff++;
+	}
+	buff++;
+	return (buff);
 }
 
 /**
@@ -37,26 +79,12 @@ NULL if the allocation fails.
  */
 char	*ft_itoa(int n)
 {
-	long int	num_counter;
 	long int	nc;
 	int			buff;
 	char		*str;
 
-	buff = 0;
-	if (n < 0)
-	{
-		num_counter = (long)n * -1;
-		buff++;
-	}
-	else
-		num_counter = n;
-	nc = num_counter;
-	while (num_counter >= 10)
-	{
-		num_counter /= 10;
-		buff++;
-	}
-	buff++;
+	buff = calculat_number_lenght(n);
+	nc = ft_abs(n);
 	str = (char *)malloc((sizeof(char) * buff) + 1);
 	if (!str)
 		return (NULL);

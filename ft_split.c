@@ -12,6 +12,13 @@
 
 #include "libft.h"
 
+/**
+ * @brief counts how many str in result of spliting
+ *
+ * @param s {char *} str to be splited
+ * @param c {char } sip
+ * @return  {size_t} number of strs in result
+ */
 static size_t	cont_strings(const char *s, char c)
 {
 	int	i;
@@ -30,6 +37,14 @@ static size_t	cont_strings(const char *s, char c)
 	return (counter);
 }
 
+/**
+ * @brief counts how many litter in one part of string
+ *
+ * @param s {char *} str to be splited
+ * @param c {char } Spirator
+ *@return size_t {size_t} how many litter in str
+  starting from an adreess tell finding the sip
+ */
 static size_t	count_litters(const char *s, char c)
 {
 	int	i;
@@ -40,6 +55,13 @@ static size_t	count_litters(const char *s, char c)
 	return (i);
 }
 
+/**
+* @brief allocated new memory of <count_litters> bytes and
+		copies the from s tell sip found
+ * @param s {char *} str to be splited
+ * @param c {char } sip
+ * @return {char *} a part of result
+ */
 static char	*part(const char *s, char c)
 {
 	int		n;
@@ -60,15 +82,43 @@ static char	*part(const char *s, char c)
 	return (ptr);
 }
 
-static void	ft_free(char **rs)
+/**
+
+	* @brief loops on S and increments if found any C if not
+		call function part of that address and assing rsukt to rs,
+			and increment i tell new sip fond
+ *
+ * @param rs {Char **} holder to put result string in it
+ * @param s {Char *} source string to be splited
+ * @param c {char } Spiratpor
+ * @return {char **} returns rs
+ */
+static char	**spliter(char **rs, char const *s, char c)
 {
 	int	i;
 
 	i = 0;
-	while (rs[i] != NULL)
+	while (*s)
 	{
-		free(rs[i]);
+		while (*s && *s == c)
+			s++;
+		if (*s)
+		{
+			rs[i] = part(s, c);
+			if (rs[i] == NULL)
+			{
+				i = 0;
+				while (rs[i] != NULL)
+					free(rs[i]);
+				return (NULL);
+			}
+			i++;
+		}
+		while (*s && *s != c)
+			s++;
 	}
+	rs[i] = 0;
+	return (rs);
 }
 
 /**
@@ -84,9 +134,7 @@ static void	ft_free(char **rs)
 char	**ft_split(char const *s, char c)
 {
 	int		strings_count;
-	int		i;
 	char	**rs;
-	char	*result;
 
 	if (!s)
 		return (NULL);
@@ -94,25 +142,7 @@ char	**ft_split(char const *s, char c)
 	rs = (char **)malloc((strings_count + 1) * sizeof(char *));
 	if (!rs)
 		return (NULL);
-	i = 0;
-	while (*s)
-	{
-		while (*s && *s == c)
-			s++;
-		if (*s)
-		{
-			result = part(s, c);
-			rs[i] = result;
-			if (result == NULL)
-			{
-				ft_free(rs);
-				return (NULL);
-			}
-			i++;
-		}
-		while (*s && *s != c)
-			s++;
-	}
-	rs[i] = 0;
+	if (!spliter(rs, s, c))
+		return (NULL);
 	return (rs);
 }

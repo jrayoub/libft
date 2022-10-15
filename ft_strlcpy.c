@@ -24,16 +24,14 @@ size_t	ft_strlcpy(char *dst, const char *src, size_t dst_size)
 		while (--l_room != 0)
 		{
 			*dst = *src;
-			if (!dst++ && !src++)
+			if (*src == '\0')
 				break ;
+			dst++;
+			src++;
 		}
 	}
 	if (l_room == 0)
-	{
 		if (dst_size != 0)
 			*dst = '\0';
-		while (*src++)
-			;
-	}
-	return (src - osrc - 1);
+	return (ft_strlen(osrc));
 }
